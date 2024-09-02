@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+void main() async {
+  await dotenv.load();
   runApp(const MyApp());
 }
 
@@ -10,8 +12,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final String appName = dotenv.env['APP_NAME'] ?? 'Flutter Web App';
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: appName,
       theme: ThemeData(
         // This is the theme of your application.
         //
